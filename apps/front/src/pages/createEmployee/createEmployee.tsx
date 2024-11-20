@@ -1,18 +1,17 @@
 import { useState } from "react";
-// @ts-ignore: DropdownMenu
 import DropdownMenu from "@gmaxdev/dropdown-plugin";
 import departments from "../../data/departments.json";
+import states from "../../data/states.json";
 import "@gmaxdev/dropdown-plugin/dist/style.css";
 
 export default function CreateEmployee() {
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    fetch(import.meta.env.VITE_API_URL + "/api/employees", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/employees`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,59 +28,53 @@ export default function CreateEmployee() {
   };
 
   return (
-    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-      <section className="w-2/4 p-6 mt-10 bg-gray-300 rounded-2xl">
-        <div className="flex flex-wrap gap-6 mb-4">
-          <div className="flex items-center">
-            <p className="w-32 mr-4">First Name</p>
-            <input className="px-2 py-1 border" type="text" name="firstName" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">Last Name</p>
-            <input className="px-2 py-1 border" type="text" name="lastName" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">Date of Birth</p>
-            <input className="px-2 py-1 border" type="date" name="birthDate" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">Start Date</p>
-            <input className="px-2 py-1 border" type="date" name="startDate" />
-          </div>
+    <form className="flex flex-col items-center justify-center" onSubmit={handleSubmit}>
+      <section className="p-6 mt-10 bg-gray-300 rounded-2xl">
+        <div className="grid grid-cols-3 gap-6 mb-4">
+          {[
+            { label: "First Name", name: "firstName", type: "text" },
+            { label: "Last Name", name: "lastName", type: "text" },
+            { label: "Date of Birth", name: "birthDate", type: "date" },
+            { label: "Start Date", name: "startDate", type: "date" },
+          ].map((field) => (
+            <>
+              <p className="col-span-1 mr-4">{field.label}</p>
+              <input
+                className="w-full col-span-2 px-2 py-1 border"
+                type={field.type}
+                name={field.name}
+              />
+            </>
+          ))}
         </div>
       </section>
 
-      <section className="w-2/4 p-6 mt-10 bg-gray-300 rounded-2xl">
-        <div className="flex flex-wrap gap-6 mb-4">
-          <div className="flex items-center">
-            <p className="w-32 mr-4">Street</p>
-            <input className="px-2 py-1 border" type="text" name="street" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">City</p>
-            <input className="px-2 py-1 border" type="text" name="city" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">State</p>
-            <input className="px-2 py-1 border" type="text" name="state" />
-          </div>
-          <div className="flex items-center">
-            <p className="w-32 mr-4">Zip Code</p>
-            <input className="px-2 py-1 border" type="text" name="zipCode" />
-          </div>
-        </div>
-      </section>
-
-      <section className="relative w-2/4 p-6 mt-10 bg-gray-300 rounded-2xl"> {/* Ajout de relative ici */}
-        <div className="z-0 flex items-center w-full">
-          <p className="w-32 mr-4">Department</p>
-          {/* <input
-            className="flex-grow px-2 py-1 border"
-            type="text"
-            name="department"
-          /> */}
-        <DropdownMenu className="absolute left-0 z-10 mt-2 top-full" options={departments} />
-
+      <section className="p-6 mt-10 bg-gray-300 rounded-2xl">
+        <div className="grid grid-cols-3 gap-6 mb-4">
+          {[
+            { label: "Street", name: "street", type: "text" },
+            { label: "City", name: "city", type: "text" },
+            { label: "Zip Code", name: "zipCode", type: "text" },
+          ].map((field) => (
+            <>
+              <p className="col-span-1 mr-4">{field.label}</p>
+              <input
+                className="w-full col-span-2 px-2 py-1 border"
+                type={field.type}
+                name={field.name}
+              />
+            </>
+          ))}
+          <p className="col-span-1 mr-4">Departments</p>
+          <DropdownMenu
+            className="w-full col-span-2 px-2 py-1 border"
+            options={departments}
+          />
+          <p className="col-span-1 mr-4">State</p>
+          <DropdownMenu
+            className="w-full col-span-2 px-2 py-1 border"
+            options={states}
+          />
         </div>
       </section>
 
