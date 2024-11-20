@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import './dropdownmenu.css';
 
-const CustomSelect = ({ options, placeholder = "Select an option" }) => {
+const CustomSelect = ({ options, placeholder = "" }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
