@@ -22,5 +22,18 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.1"
-  }
+  },
+  "author": {
+    "name": "Maxime G."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GMaxDev/WealthHealth/tree/main/packages/dropdown-plugin"
+  },
+  "keywords": [
+    "dropdown",
+    "react",
+    "plugin",
+    "menu"
+  ]
 }
