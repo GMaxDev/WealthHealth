@@ -7,7 +7,7 @@ const port = 3001;
 
 // Utilisation de CORS pour autoriser les requêtes depuis le frontend
 app.use(cors({
-  origin: 'http://localhost:5173', // Origine du frontend 
+  origin: ['http://localhost:5173', 'http://localhost:5174'], // Origine du frontend
 }));
 
 // Middleware pour traiter les données JSON envoyées par le frontend
