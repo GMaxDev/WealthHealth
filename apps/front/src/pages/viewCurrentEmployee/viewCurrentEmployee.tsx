@@ -11,7 +11,7 @@ export default function ViewEmployee() {
 
   // J'utilise useEffect pour effectuer la requête au backend lors du premier rendu
   useEffect(() => {
-    fetch("http://localhost:3001/api/employees")
+    fetch(import.meta.env.VITE_API_URL + "/api/employees")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Erreur lors du chargement des employés");

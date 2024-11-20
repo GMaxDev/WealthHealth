@@ -12,7 +12,7 @@ export default function CreateEmployee() {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    fetch("http://localhost:3001/api/employees", {
+    fetch(import.meta.env.VITE_API_URL + "/api/employees", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
