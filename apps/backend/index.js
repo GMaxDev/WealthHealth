@@ -3,7 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');  // Import de path pour gérer les chemins
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; // Port du serveur
 
 // Utilisation de CORS pour autoriser les requêtes depuis le frontend
 app.use(cors({
@@ -50,6 +50,11 @@ app.get('/api/employees', (req, res) => {
 
     res.json(JSON.parse(data || '[]'));  // Retourne les employés sous forme de JSON
   });
+});
+
+// Endpoint de test pour vérifier que le serveur fonctionne
+app.get('/', (req, res) => {
+  res.send('Hello, welcome from my express server');
 });
 
 // Démarrer le serveur
