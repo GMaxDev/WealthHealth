@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gmaxdev/dropdown-plugin": "^1.0.2",
     "@types/node": "^22.7.4",
     "axios": "^1.7.7",
     "jquery-ui": "^1.14.1",

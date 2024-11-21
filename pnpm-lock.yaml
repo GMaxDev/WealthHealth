@@ -62,15 +62,15 @@ importers:
 
   apps/front:
     dependencies:
-      '@gmaxdev/dropdown-plugin':
-        specifier: ^1.0.2
-        version: 1.0.2
       '@types/node':
         specifier: ^22.7.4
         version: 22.9.0
       axios:
         specifier: ^1.7.7
         version: 1.7.7
+      jquery-ui:
+        specifier: ^1.14.1
+        version: 1.14.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -408,9 +408,6 @@ packages:
   '@eslint/plugin-kit@0.2.0':
     resolution: {integrity: sha512-vH9PiIMMwvhCx31Af3HiGzsVNULDbyVkHXwlemn/B0TFj/00ho3y55efXrUZTfQipxoHC5u4xq6zblww1zm1Ig==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@gmaxdev/dropdown-plugin@1.0.2':
-    resolution: {integrity: sha512-1aYPi1ynCZ2bPPidZXax3fxNpLE3su3zjpqNnPbjCZ2JvJfx4cuDrbZZQqxhz6En3LyOwHQU3rXea7PTib49+Q==}
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -1313,6 +1310,12 @@ packages:
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
+
+  jquery-ui@1.14.1:
+    resolution: {integrity: sha512-DhzsYH8VeIvOaxwi+B/2BCsFFT5EGjShdzOcm5DssWjtcpGWIMsn66rJciDA6jBruzNiLf1q0KvwMoX1uGNvnQ==}
+
+  jquery@3.7.1:
+    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2239,11 +2242,6 @@ snapshots:
   '@eslint/plugin-kit@0.2.0':
     dependencies:
       levn: 0.4.1
-
-  '@gmaxdev/dropdown-plugin@1.0.2':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
@@ -3287,6 +3285,12 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
+
+  jquery-ui@1.14.1:
+    dependencies:
+      jquery: 3.7.1
+
+  jquery@3.7.1: {}
 
   js-tokens@4.0.0: {}
 
