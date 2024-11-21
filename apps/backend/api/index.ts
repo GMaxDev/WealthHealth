@@ -16,7 +16,7 @@ app.use(
 app.use(express.json());
 
 // Je définis le chemin vers employees.json dans le dossier api
-const filePath = path.join(__dirname, "api", "employees.json");
+const filePath = path.join(process.cwd(), "api", "employees.json");
 
 // Endpoint pour recevoir les données et les stocker dans un fichier JSON
 app.post("/api/employees", (req, res) => {
