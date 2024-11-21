@@ -1,53 +1,5 @@
 [
   {
-    "firstName": "John",
-    "lastName": "Doe",
-    "dateOfBirth": "1990-01-15",
-    "startDate": "2023-03-10",
-    "street": "123 Elm Street",
-    "city": "Springfield",
-    "state": "IL",
-    "zipCode": "62701",
-    "department": "Sales",
-    "birthDate": "1990-01-15"
-  },
-  {
-    "firstName": "Jane",
-    "lastName": "Smith",
-    "dateOfBirth": "1985-07-25",
-    "startDate": "2022-09-21",
-    "street": "456 Oak Avenue",
-    "city": "Hometown",
-    "state": "TX",
-    "zipCode": "75001",
-    "department": "Marketing",
-    "birthDate": "1985-07-25"
-  },
-  {
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "dateOfBirth": "1992-04-30",
-    "startDate": "2023-01-15",
-    "street": "789 Pine Road",
-    "city": "Metropolis",
-    "state": "CA",
-    "zipCode": "90001",
-    "department": "Engineering",
-    "birthDate": "1992-04-30"
-  },
-  {
-    "firstName": "Bob",
-    "lastName": "Williams",
-    "dateOfBirth": "1988-12-10",
-    "startDate": "2021-11-05",
-    "street": "101 Maple Lane",
-    "city": "Gotham",
-    "state": "NY",
-    "zipCode": "10001",
-    "department": "HR",
-    "birthDate": "1988-12-10"
-  },
-  {
     "firstName": "Carol",
     "lastName": "Brown",
     "dateOfBirth": "1975-03-22",
