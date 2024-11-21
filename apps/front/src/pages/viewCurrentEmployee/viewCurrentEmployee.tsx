@@ -9,9 +9,15 @@ export default function ViewEmployee() {
   const [employeesPerPage, setEmployeesPerPage] = useState(10);
   const [searchQuery, setSearchQuery] = useState(""); // Requête de recherche
 
+  // Détecter l'environnement (local ou production)
+  const apiUrl =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_API_URL // URL backend en local
+      : import.meta.env.VITE_API_URL_PROD; // URL backend en production
+
   // J'utilise useEffect pour effectuer la requête au backend lors du premier rendu
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/api/employees")
+    fetch(`${apiUrl}/api/employees`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Erreur lors du chargement des employés");
@@ -26,7 +32,7 @@ export default function ViewEmployee() {
         setError(error.message); // Gérer les erreurs
         setLoading(false);
       });
-  }, []); // Le tableau vide [] sert à exécuté uniquement useEffect au montage du composant
+  }, [apiUrl]); // Le tableau vide [] sert à exécuté uniquement useEffect au montage du composant
 
   // Filtrer les employés en fonction de la recherche
   const filteredEmployees = filterEmployees(employees, searchQuery);
