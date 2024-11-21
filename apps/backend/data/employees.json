@@ -1,4 +1,4 @@
-module.exports = [
+[
   {
     "firstName": "Carol",
     "lastName": "Brown",
@@ -58,5 +58,16 @@ module.exports = [
     "zipCode": "80201",
     "department": "Operations",
     "birthDate": "1997-06-29"
+  },
+  {
+    "firstName": "test",
+    "lastName": "test",
+    "birthDate": "2024-10-30",
+    "startDate": "2024-11-23",
+    "street": "testa",
+    "city": "test",
+    "zipCode": "test",
+    "department": "",
+    "state": ""
   }
 ]
