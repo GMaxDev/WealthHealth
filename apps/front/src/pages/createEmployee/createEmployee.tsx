@@ -1,12 +1,11 @@
-import { useState } from "react";
-import DropdownMenu from "@gmaxdev/dropdown-plugin";
+import { useState, useEffect } from "react";
+import $ from "jquery";
+import "jquery-ui/ui/widgets/selectmenu";
 import departments from "../../data/departments.json";
 import states from "../../data/states.json";
-import "@gmaxdev/dropdown-plugin/dist/style.css";
+import "jquery-ui/themes/base/all.css"; // Inclure les styles jQuery UI
 
 export default function CreateEmployee() {
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedState, setSelectedState] = useState("");
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -15,46 +14,62 @@ export default function CreateEmployee() {
     street: "",
     city: "",
     zipCode: "",
+    department: "",
+    state: "",
   });
+
   const [successMessage, setSuccessMessage] = useState(""); // Message de confirmation
 
-  // Gestion de la modification des champs de formulaire
+  // Initialisation des menus déroulants jQuery UI
+  useEffect(() => {
+    $("#departmentSelect").selectmenu({
+      change: function (event, ui) {
+        setFormValues((prev) => ({
+          ...prev,
+          department: ui.item.value,
+        }));
+      },
+    });
+
+    $("#stateSelect").selectmenu({
+      change: function (event, ui) {
+        setFormValues((prev) => ({
+          ...prev,
+          state: ui.item.value,
+        }));
+      },
+    });
+
+    // Nettoyer les composants jQuery UI à la désinstallation
+    return () => {
+      $("#departmentSelect").selectmenu("destroy");
+      $("#stateSelect").selectmenu("destroy");
+    };
+  }, []);
+
+  // Gestion des changements des champs de texte
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Gestion de la soumission du formulaire
+  // Gestion de la soumission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Création de l'objet de données avec FormData
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    // Envoi des données au backend
+    console.log("Données du formulaire : ", formValues);
 
-    // Conversion en objet
-    const data = Object.fromEntries(formData);
-
-    // Ajout manuellement des valeurs de selectedDepartment et selectedState
-    data.department = selectedDepartment;
-    data.state = selectedState;
-
-    // Affichage des données pour vérification
-    console.log("Form data being sent:", data);
-
-    // Envoi de la requête POST
     fetch(`${import.meta.env.VITE_API_URL}/api/employees`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formValues),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-
-        // Réinitialisation des champs du formulaire
+        console.log("Succès :", data);
         setFormValues({
           firstName: "",
           lastName: "",
@@ -63,16 +78,14 @@ export default function CreateEmployee() {
           street: "",
           city: "",
           zipCode: "",
+          department: "",
+          state: "",
         });
-        setSelectedDepartment("");
-        setSelectedState("");
-
-        // Affichage du message de confirmation
         setSuccessMessage("Employé ajouté avec succès !");
-        setTimeout(() => setSuccessMessage(""), 3000); // Effacer le message après 3 secondes
+        setTimeout(() => setSuccessMessage(""), 3000);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Erreur :", error);
         alert("Une erreur est survenue.");
       });
   };
@@ -125,20 +138,24 @@ export default function CreateEmployee() {
               />
             </>
           ))}
+
           <p className="col-span-1 mr-4">Departments</p>
-          <DropdownMenu
-            className="w-full col-span-2 px-2 py-1 border"
-            options={departments}
-            value={selectedDepartment} // Utilisation de l'état
-            onChange={(value) => setSelectedDepartment(value)} // Mise à jour de l'état
-          />
+          <select id="departmentSelect" className="col-span-2">
+            {departments.map((dep) => (
+              <option key={dep.id} value={dep.name}>
+                {dep.name}
+              </option>
+            ))}
+          </select>
+
           <p className="col-span-1 mr-4">State</p>
-          <DropdownMenu
-            className="w-full col-span-2 px-2 py-1 border"
-            options={states}
-            value={selectedState} // Utilisation de l'état
-            onChange={(value) => setSelectedState(value)} // Mise à jour de l'état
-          />
+          <select id="stateSelect" className="col-span-2">
+            {states.map((state) => (
+              <option key={state.id} value={state.name}>
+                {state.name}
+              </option>
+            ))}
+          </select>
         </div>
       </section>
 
