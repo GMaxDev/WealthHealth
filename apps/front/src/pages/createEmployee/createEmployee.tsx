@@ -16,33 +16,25 @@ export default function CreateEmployee() {
     city: "",
     zipCode: "",
   });
-  const [successMessage, setSuccessMessage] = useState(""); // Message de confirmation
+  const [successMessage, setSuccessMessage] = useState("");
 
-  // Gestion de la modification des champs de formulaire
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Gestion de la soumission du formulaire
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Création de l'objet de données avec FormData
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    // Conversion en objet
     const data = Object.fromEntries(formData);
-
-    // Ajout manuellement des valeurs de selectedDepartment et selectedState
     data.department = selectedDepartment;
     data.state = selectedState;
 
-    // Affichage des données pour vérification
     console.log("Form data being sent:", data);
 
-    // Envoi de la requête POST
     fetch(`${import.meta.env.VITE_API_URL}/api/employees`, {
       method: "POST",
       headers: {
@@ -54,7 +46,6 @@ export default function CreateEmployee() {
       .then((data) => {
         console.log("Success:", data);
 
-        // Réinitialisation des champs du formulaire
         setFormValues({
           firstName: "",
           lastName: "",
@@ -67,9 +58,8 @@ export default function CreateEmployee() {
         setSelectedDepartment("");
         setSelectedState("");
 
-        // Affichage du message de confirmation
         setSuccessMessage("Employé ajouté avec succès !");
-        setTimeout(() => setSuccessMessage(""), 3000); // Effacer le message après 3 secondes
+        setTimeout(() => setSuccessMessage(""), 3000);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -93,16 +83,17 @@ export default function CreateEmployee() {
             { label: "Date of Birth", name: "birthDate", type: "date" },
             { label: "Start Date", name: "startDate", type: "date" },
           ].map((field) => (
-            <>
+            <div key={field.name} className="grid grid-cols-3 gap-6">
               <p className="col-span-1 mr-4">{field.label}</p>
               <input
                 className="w-full col-span-2 px-2 py-1 border"
                 type={field.type}
                 name={field.name}
-                value={formValues[field.name]} // Utilisation des valeurs d'état
-                onChange={handleChange} // Mise à jour des valeurs d'état
+                value={formValues[field.name]}
+                onChange={handleChange}
+                aria-label={field.label}
               />
-            </>
+            </div>
           ))}
         </div>
       </section>
@@ -114,40 +105,41 @@ export default function CreateEmployee() {
             { label: "City", name: "city", type: "text" },
             { label: "Zip Code", name: "zipCode", type: "text" },
           ].map((field) => (
-            <>
+            <div key={field.name} className="grid grid-cols-3 gap-6">
               <p className="col-span-1 mr-4">{field.label}</p>
               <input
                 className="w-full col-span-2 px-2 py-1 border"
                 type={field.type}
                 name={field.name}
-                value={formValues[field.name]} // Utilisation des valeurs d'état
-                onChange={handleChange} // Mise à jour des valeurs d'état
+                value={formValues[field.name]}
+                onChange={handleChange}
+                aria-label={field.label}
               />
-            </>
+            </div>
           ))}
           <p className="col-span-1 mr-4">Departments</p>
           <DropdownMenu
             className="w-full col-span-2 px-2 py-1 border"
             options={departments}
-            value={selectedDepartment} // Utilisation de l'état
-            onChange={(value) => setSelectedDepartment(value)} // Mise à jour de l'état
+            value={selectedDepartment}
+            onChange={(value) => setSelectedDepartment(value)}
           />
           <p className="col-span-1 mr-4">State</p>
           <DropdownMenu
             className="w-full col-span-2 px-2 py-1 border"
             options={states}
-            value={selectedState} // Utilisation de l'état
-            onChange={(value) => setSelectedState(value)} // Mise à jour de l'état
+            value={selectedState}
+            onChange={(value) => setSelectedState(value)}
           />
         </div>
       </section>
 
       <button
         type="submit"
-        className="px-4 py-2 mt-6 text-white bg-blue-500 rounded"
+        className="px-4 py-2 mt-6 text-white bg-blue-800 rounded"
       >
         Submit
       </button>
     </form>
   );
-}
+} 
