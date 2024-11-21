@@ -4,6 +4,17 @@
 
 Le projet consiste à moderniser l’application interne HRNet de WealthHealth, utilisée pour gérer les dossiers des employés. Initialement développée avec jQuery, elle est devenue lente et sujette aux bugs. Le but est de convertir l’application en React pour améliorer ses performances, sa maintenabilité et remplacer l'un des plugins jQuery par un composant React personnalisé.
 
+---
+
+## Environnement recommandé
+
+Pour garantir une configuration optimale lors du développement, voici les versions et outils recommandés :
+
+- **Version de Node.js** : `v18.17.1` (ou version LTS équivalente).
+- **IDE** : [Visual Studio Code](https://code.visualstudio.com/) est recommandé
+
+---
+
 ## React DropdownMenu Component
 
 ### Description
