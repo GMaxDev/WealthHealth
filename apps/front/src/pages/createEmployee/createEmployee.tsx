@@ -35,7 +35,7 @@ export default function CreateEmployee() {
 
     console.log("Form data being sent:", data);
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/employees`, {
+    fetch(`${import.meta.env.VITE_API_URL}/data/employees`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -142,4 +142,4 @@ export default function CreateEmployee() {
       </button>
     </form>
   );
-} 
+}

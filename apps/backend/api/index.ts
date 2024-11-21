@@ -1,27 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const json = require("./employees.js");
+const fs = require("fs");
+const path = require("path"); // Import de path pour gérer les chemins
+const json = require("../data/employees.js");
 const app = express();
 const port = process.env.PORT || 3001; // Port du serveur
 
-// Liste des origines autorisées (local + déploiement)
-const allowedOrigins = [
-  "http://localhost:5173", // Frontend local
-  "http://localhost:5174", // Autre port local
-  "https://wealth-health-front.vercel.app", // Frontend déployé
-  "https://wealth-health-back.vercel.app", // Backend déployé
-];
-
-// Configuration CORS dynamique
+// Utilisation de CORS pour autoriser les requêtes depuis le frontend
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true); // Autorise l'accès
-      } else {
-        callback(new Error("Not allowed by CORS")); // Bloque l'accès
-      }
-    },
+    origin: ["http://localhost:5173", "http://localhost:5174"], // Origine du frontend
   })
 );
 
@@ -29,7 +17,7 @@ app.use(
 app.use(express.json());
 
 // Endpoint pour recevoir les données et les stocker dans un fichier JSON
-app.post("/api/employees", (req, res) => {
+app.post("/data/employees", (req, res) => {
   const newEmployee = req.body;
 
   // Ajouter les nouvelles données
@@ -38,8 +26,8 @@ app.post("/api/employees", (req, res) => {
   res.status(201).json({ message: "Données sauvegardées avec succès" });
 });
 
-// Endpoint pour récupérer les employés
-app.get("/api/employees", (req, res) => {
+// **Nouvel endpoint pour récupérer les employés**
+app.get("/data/employees", (req, res) => {
   res.json(json || "[]"); // Retourne les employés sous forme de JSON
 });
 
