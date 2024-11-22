@@ -52,6 +52,40 @@ pnpm install
 
 ---
 
+Pour lancer tout les serveurs, vous pouvez lancer la commande globale suivante, depuis la racine du projet:
+
+```bash
+pnpm -F '*' dev
+```
+
+---
+
+Pour lancer le serveur front, vous pouvez taper la commande suivante depuis la racine:
+
+```bash
+pnpm -F 'front' dev
+```
+Où depuis le folder front:
+
+```bash
+pnpm run dev
+````
+
+---
+
+Pour lancer le serveur backend, vous pouvez taper la commande suivante depuis la racine:
+
+```bash
+pnpm -F 'backend' dev
+```
+Où depuis le folder backend:
+
+```bash
+pnpm run dev
+````
+
+---
+
 ### Exemple d'utilisation
 
 Voici un exemple de base utilisant `DropdownMenu` :
