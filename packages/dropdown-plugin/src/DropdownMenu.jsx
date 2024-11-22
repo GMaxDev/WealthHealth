@@ -55,13 +55,13 @@ const CustomSelect = ({ options, placeholder = "" }) => {
   );
 };
 
-export default function DropdownMenu({ options }) {
+export default function DropdownMenu({ options, style = '' }) {
   /**
    * Composant principal pour afficher un menu déroulant.
    * @param {Array} options - Tableau d'options à transmettre au composant CustomSelect.
    */
   return (
-    <div className="dropdown">
+    <div className={style}>
       <CustomSelect options={options} />
     </div>
   );

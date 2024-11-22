@@ -1,6 +1,5 @@
 .custom-select {
   position: relative;
-  display: inline-block;
   width: 100%;
 }
 
@@ -41,6 +40,7 @@
   padding: 8px 10px;
   cursor: pointer;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   background-color: #fff;
 }

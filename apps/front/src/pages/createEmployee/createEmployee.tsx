@@ -68,7 +68,10 @@ export default function CreateEmployee() {
   };
 
   return (
-    <form className="flex flex-col items-center justify-center" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col items-center justify-center"
+      onSubmit={handleSubmit}
+    >
       {successMessage && (
         <div className="p-4 mb-4 text-green-700 bg-green-200 rounded">
           {successMessage}
@@ -76,7 +79,7 @@ export default function CreateEmployee() {
       )}
 
       <section className="p-6 mt-10 bg-gray-300 rounded-2xl">
-        <div className="grid grid-cols-3 gap-6 mb-4">
+        <div className="gap-6 mb-4">
           {[
             { label: "First Name", name: "firstName", type: "text" },
             { label: "Last Name", name: "lastName", type: "text" },
@@ -99,7 +102,7 @@ export default function CreateEmployee() {
       </section>
 
       <section className="p-6 mt-10 bg-gray-300 rounded-2xl">
-        <div className="grid grid-cols-3 gap-6 mb-4">
+        <div className="gap-6 mb-4 ">
           {[
             { label: "Street", name: "street", type: "text" },
             { label: "City", name: "city", type: "text" },
@@ -117,20 +120,24 @@ export default function CreateEmployee() {
               />
             </div>
           ))}
-          <p className="col-span-1 mr-4">Departments</p>
-          <DropdownMenu
-            className="w-full col-span-2 px-2 py-1 border"
-            options={departments}
-            value={selectedDepartment}
-            onChange={(value) => setSelectedDepartment(value)}
-          />
-          <p className="col-span-1 mr-4">State</p>
-          <DropdownMenu
-            className="w-full col-span-2 px-2 py-1 border"
-            options={states}
-            value={selectedState}
-            onChange={(value) => setSelectedState(value)}
-          />
+          <div className="grid grid-cols-3 gap-6">
+            <p className="col-span-1 mr-30">Departments</p>
+            <DropdownMenu
+              options={departments}
+              value={selectedDepartment}
+              onChange={(value) => setSelectedDepartment(value)}
+              style="col-span-2"
+            />
+          </div>
+          <div className="grid grid-cols-3 gap-6">
+            <p className="col-span-1 mr-4">State</p>
+            <DropdownMenu
+              options={states}
+              value={selectedState}
+              onChange={(value) => setSelectedState(value)}
+              style="col-span-2"
+            />
+          </div>
         </div>
       </section>
 
