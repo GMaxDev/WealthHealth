@@ -124,5 +124,16 @@
     "zipCode": "",
     "department": "",
     "state": ""
+  },
+  {
+    "firstName": "",
+    "lastName": "",
+    "birthDate": "",
+    "startDate": "",
+    "street": "",
+    "city": "",
+    "zipCode": "",
+    "department": "",
+    "state": ""
   }
 ]
