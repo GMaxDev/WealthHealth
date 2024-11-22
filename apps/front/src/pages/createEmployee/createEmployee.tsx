@@ -15,6 +15,8 @@ export default function CreateEmployee() {
     street: "",
     city: "",
     zipCode: "",
+    state: "",
+    department: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -54,6 +56,8 @@ export default function CreateEmployee() {
           street: "",
           city: "",
           zipCode: "",
+          state: "",
+          department: "",
         });
         setSelectedDepartment("");
         setSelectedState("");
@@ -121,7 +125,7 @@ export default function CreateEmployee() {
             </div>
           ))}
           <div className="grid grid-cols-3 gap-6">
-            <p className="col-span-1 mr-30">Departments</p>
+            <p className="col-span-1 mr-4">State</p>
             <DropdownMenu
               options={departments}
               value={selectedDepartment}
@@ -130,7 +134,7 @@ export default function CreateEmployee() {
             />
           </div>
           <div className="grid grid-cols-3 gap-6">
-            <p className="col-span-1 mr-4">State</p>
+            <p className="col-span-1 mr-30">Departments</p>
             <DropdownMenu
               options={states}
               value={selectedState}

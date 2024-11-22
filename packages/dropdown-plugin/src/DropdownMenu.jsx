@@ -1,15 +1,27 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import './dropdownmenu.css';
+import { useState, useEffect } from "react";
+import "./dropdownmenu.css";
 
 /**
  * Composant CustomSelect
  * @param {Array} options - Tableau d'options à afficher dans le menu déroulant. Chaque option est un objet avec des propriétés `value` et `label`.
+ * @param {string} value - Valeur actuellement sélectionnée, contrôlée par le parent.
  * @param {string} placeholder - Texte à afficher par défaut lorsqu'aucune option n'est sélectionnée. (Facultatif)
+ * @param {Function} onChange - Fonction appelée lorsqu'une option est sélectionnée.
  */
-const CustomSelect = ({ options, placeholder = "" }) => {
+const CustomSelect = ({ options, value, placeholder = "", onChange }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  // Synchroniser la sélection locale avec la prop `value`
+  useEffect(() => {
+    if (value) {
+      const matchingOption = options.find((option) => option.value === value);
+      setSelectedOption(matchingOption || null);
+    } else {
+      setSelectedOption(null);
+    }
+  }, [value, options]);
 
   /**
    * Gère la sélection d'une option.
@@ -19,6 +31,12 @@ const CustomSelect = ({ options, placeholder = "" }) => {
   const handleSelect = (option) => {
     setSelectedOption(option);
     setIsOpen(false); // Ferme le menu après la sélection
+    console.log("Option sélectionnée dans DropdownMenu :", option);
+
+    // Appeler la prop onChange pour remonter la valeur au parent
+    if (onChange) {
+      onChange(option.value); // Remonter uniquement la valeur
+    }
   };
 
   /**
@@ -55,14 +73,21 @@ const CustomSelect = ({ options, placeholder = "" }) => {
   );
 };
 
-export default function DropdownMenu({ options, style = '' }) {
+export default function DropdownMenu({ options, value, onChange, style = "" }) {
   /**
    * Composant principal pour afficher un menu déroulant.
    * @param {Array} options - Tableau d'options à transmettre au composant CustomSelect.
+   * @param {string} value - Valeur actuelle de la sélection.
+   * @param {Function} onChange - Fonction appelée lors d'un changement de sélection.
    */
   return (
     <div className={style}>
-      <CustomSelect options={options} />
+      <CustomSelect
+        options={options}
+        value={value}
+        onChange={onChange}
+        placeholder="Select an option"
+      />
     </div>
   );
-};
+}
