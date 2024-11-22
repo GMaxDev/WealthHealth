@@ -115,7 +115,7 @@ export default function ViewEmployee() {
             </tr>
           </thead>
           <tbody>
-            {currentEmployees.map((employee, index) => (
+            {currentEmployees.map((employee: any, index: number) => (
               <tr
                 key={index}
                 className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}

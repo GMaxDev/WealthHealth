@@ -7,7 +7,19 @@ import "@gmaxdev/dropdown-plugin/dist/style.css";
 export default function CreateEmployee() {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedState, setSelectedState] = useState("");
-  const [formValues, setFormValues] = useState({
+  type FormValues = {
+    firstName: string;
+    lastName: string;
+    birthDate: string;
+    startDate: string;
+    street: string;
+    city: string;
+    zipCode: string;
+    state: string;
+    department: string;
+  };
+
+  const [formValues, setFormValues] = useState<FormValues>({
     firstName: "",
     lastName: "",
     birthDate: "",
@@ -96,7 +108,7 @@ export default function CreateEmployee() {
                 className="w-full col-span-2 px-2 py-1 border"
                 type={field.type}
                 name={field.name}
-                value={formValues[field.name]}
+                value={formValues[field.name as keyof FormValues]}
                 onChange={handleChange}
                 aria-label={field.label}
               />
@@ -118,7 +130,7 @@ export default function CreateEmployee() {
                 className="w-full col-span-2 px-2 py-1 border"
                 type={field.type}
                 name={field.name}
-                value={formValues[field.name]}
+                value={formValues[field.name as keyof FormValues]}
                 onChange={handleChange}
                 aria-label={field.label}
               />
@@ -129,7 +141,7 @@ export default function CreateEmployee() {
             <DropdownMenu
               options={departments}
               value={selectedDepartment}
-              onChange={(value) => setSelectedDepartment(value)}
+              onChange={(value: string) => setSelectedDepartment(value)}
               style="col-span-2"
             />
           </div>
@@ -138,7 +150,7 @@ export default function CreateEmployee() {
             <DropdownMenu
               options={states}
               value={selectedState}
-              onChange={(value) => setSelectedState(value)}
+              onChange={(value: string) => setSelectedState(value)}
               style="col-span-2"
             />
           </div>

@@ -157,5 +157,16 @@
     "zipCode": "dfsgdsg",
     "department": "California",
     "state": "Engineering"
+  },
+  {
+    "firstName": "daniel",
+    "lastName": "daniel",
+    "birthDate": "2024-11-15",
+    "startDate": "2024-11-16",
+    "street": "daniel",
+    "city": "daniel",
+    "zipCode": "daniel",
+    "department": "California",
+    "state": "Legal"
   }
 ]
