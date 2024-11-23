@@ -60,113 +60,14 @@
     "birthDate": "1997-06-29"
   },
   {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "mamamamama",
-    "lastName": "mamamamama",
-    "birthDate": "",
-    "startDate": "",
-    "street": "mamamamama",
-    "city": "mamamamama",
-    "zipCode": "mamamamama",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "",
-    "state": ""
-  },
-  {
-    "firstName": "",
-    "lastName": "",
-    "birthDate": "",
-    "startDate": "",
-    "street": "",
-    "city": "",
-    "zipCode": "",
-    "department": "Arizona",
-    "state": ""
-  },
-  {
-    "firstName": "gfesg",
-    "lastName": "dfsgdsfg",
-    "birthDate": "2024-11-14",
-    "startDate": "2024-11-21",
-    "street": "dfsgfd",
-    "city": "dfsgdfs",
-    "zipCode": "dfsgdsg",
-    "department": "California",
-    "state": "Engineering"
-  },
-  {
-    "firstName": "daniel",
-    "lastName": "daniel",
-    "birthDate": "2024-11-15",
-    "startDate": "2024-11-16",
-    "street": "daniel",
-    "city": "daniel",
-    "zipCode": "daniel",
-    "department": "California",
-    "state": "Legal"
+    "firstName": "tata",
+    "lastName": "tata",
+    "birthDate": "2024-11-09",
+    "startDate": "2024-11-07",
+    "street": "tata",
+    "city": "tata",
+    "zipCode": "tata",
+    "department": "Marketing",
+    "state": "Washington"
   }
 ]

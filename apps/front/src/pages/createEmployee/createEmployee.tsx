@@ -139,18 +139,18 @@ export default function CreateEmployee() {
           <div className="grid grid-cols-3 gap-6">
             <p className="col-span-1 mr-4">State</p>
             <DropdownMenu
-              options={departments}
-              value={selectedDepartment}
-              onChange={(value: string) => setSelectedDepartment(value)}
+              options={states}
+              value={selectedState}
+              onChange={(value: string) => setSelectedState(value)}
               style="col-span-2"
             />
           </div>
           <div className="grid grid-cols-3 gap-6">
             <p className="col-span-1 mr-30">Departments</p>
             <DropdownMenu
-              options={states}
-              value={selectedState}
-              onChange={(value: string) => setSelectedState(value)}
+              options={departments}
+              value={selectedDepartment}
+              onChange={(value: string) => setSelectedDepartment(value)}
               style="col-span-2"
             />
           </div>
