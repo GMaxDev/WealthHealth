@@ -50,6 +50,11 @@ Mais dans ce projet, le package est directement inclu lors de l'installation des
 pnpm install
 ```
 
+En fonction de l'utilisation du plugin, si on l'utilise en version local, il faudra le build, en allant dans le folder packages/dropdown-plugin
+```bash
+pnpm build
+```
+
 ---
 
 Pour lancer tout les serveurs, vous pouvez lancer la commande globale suivante, depuis la racine du projet:
