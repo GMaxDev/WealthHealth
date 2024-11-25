@@ -43,7 +43,10 @@ export default function CreateEmployee() {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const data = Object.fromEntries(formData);
+    const data: { [key: string]: FormDataEntryValue } = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
     data.department = selectedDepartment;
     data.state = selectedState;
 
